@@ -1,0 +1,38 @@
+All these assignments to be done in Chrome browser.
+You should not use Thread.sleep() or implict wait.
+
+Use only explicit Wait.
+
+
+
+Assignment1 
+- Anna assignment
+1. goto http://annauniv.edu/
+2. click on "Departments" link
+3. Goto "Faculty Of Civil Engineering" and click on "Institute for Ocean Management"
+4. Verify the page title.
+5. Goto "Research Themes" options and Click "Coastal Pollution Monitoring and Hazards"
+6. Verify the page title.
+
+Assignment2:
+- go to triphobo.com website
+- Click "Later" in be updated box (this may not appear, then ignore)
+- Click on "PLAN YOUR NEXT VACATION" button on the homepage
+- Type Where do you want to go? field, Houston in Texas
+- Select Start and End date of your journey
+- Click on button "Start Planning"
+- Click on "Next - About Your Trip"
+- Click on "Suggest an itinerary with "Things to do ""
+- Click on "Next" thrice
+- Click on "Wandering Solo"
+- Click on "Next Trip Overview"
+- Click on "Editable View"
+- Drag "Children's museum to day 3"
+- Click on Save plan -> Finish Planning
+
+
+Assignment3
+1. Go to google.com
+2. Click on Gmail link such that it opens in the same window in a new tab
+3. then login into Gmail.
+4. Come back to google.com tab and search on "Selenium WebDriver"
