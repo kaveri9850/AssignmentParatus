@@ -40,24 +40,26 @@ public class Assignment2 {
   public void f() {
 	  driver.findElement(By.xpath("//a[@id='plan-my-trip']")).click();
 	
-	  WebDriverWait wait=new WebDriverWait(driver,20);
+	 
 
 	// driver.findElement(By.cssSelector("div.form-control.search")).sendKeys("Hounston");
-	 driver.findElement(By.xpath("//body[1]/main[1]/div[5]/div[1]/div[3]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")).sendKeys("Houston");
+	driver.findElement(By.xpath("//body[1]/main[1]/div[5]/div[1]/div[3]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")).sendKeys("Houston");
+	
+	
+	 
 	// List<WebElement> options=driver.findElements(By.cssSelector("div.city-listing.city-list li"));
 	
-	 List<WebElement> options=driver.findElements(By.xpath("//ul[@class='city-list-collection']"));
+	 List<WebElement> options=driver.findElements(By.xpath("li.city-list-i.js_suggestions.js_add_city"));
 	 
 		//WebDriverWait wait=new WebDriverWait(driver,20);
 		
-		wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.cssSelector("div.city-listing.city-list li"))));
-	
-	
+	 WebDriverWait wait=new WebDriverWait(driver,10);
+	 wait.until(ExpectedConditions.visibilityOfAllElements(options));
 		for(WebElement option:options)
 		{
-			if(option.getText().equalsIgnoreCase("Houston,Texas,United States"))
+			if(option.getText().equalsIgnoreCase("Houston, Texas, United States"))
 					{
-				//wait.until(ExpectedConditions.elementToBeSelected(option));
+				
 				option.click();
 				break;
 					}
@@ -79,10 +81,11 @@ public class Assignment2 {
 	  String childwin=it.next();
 	  driver.switchTo().window(childwin);
 	//WebElement n= driver.findElement(By.xpath("//span[contains(text(),'Next')]"));
-	 // WebDriverWait wait=new WebDriverWait(driver,10);
-	wait.until(ExpectedConditions.elementToBeClickable( driver.findElement(By.xpath("//span[contains(text(),'Next')]")))).click();
-	wait.until(ExpectedConditions.elementToBeClickable( driver.findElement(By.xpath("//span[contains(text(),'Next')]")))).click();
-	wait.until(ExpectedConditions.elementToBeClickable( driver.findElement(By.xpath("//span[contains(text(),'Next')]")))).click();
+	  WebDriverWait wait1=new WebDriverWait(driver,10);
+	  
+	wait1.until(ExpectedConditions.elementToBeClickable( driver.findElement(By.xpath("//span[contains(text(),'Next')]")))).click();
+	//wait1.until(ExpectedConditions.elementToBeClickable( driver.findElement(By.xpath("//span[contains(text(),'Next')]")))).click();
+	//wait1.until(ExpectedConditions.elementToBeClickable( driver.findElement(By.xpath("//span[contains(text(),'Next')]")))).click();
 	driver.switchTo().window(mainwin);
 	driver.findElement(By.cssSelector("div.entry-point.solo-ep")).click();
 	driver.findElement(By.xpath("//div[contains(text(),'Trip Overview')]")).click();

@@ -18,16 +18,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 
-public class Assignment1 {
+public class Assignment1  {
 	WebDriver driver;
 	String expTitle="Institute For Ocean Management";
 	
   @Test
-  public void f() {
+  public void f()throws InterruptedException {
 	WebElement w1 = driver.findElement(By.xpath("//a[contains(text(),'Departments')]"));
      WebDriverWait wait=new WebDriverWait(driver,10);
        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", w1);
@@ -37,14 +38,22 @@ public class Assignment1 {
 	 
 	// wait.until(ExpectedConditions.elementToBeClickable(w));
 	 
-	 a.moveToElement(w).clickAndHold().build().perform();
+	 a.moveToElement(w).click().build().perform(); //due to the some issue this test case not ruuning
+	 WebElement element=driver.findElement(By.xpath("//div[contains(text(),'Institute\u00a0for\u00a0Ocean\u00a0Managment')]"));
+	 wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+	
+	 System.out.println(element.getText());
+	 String actualtilte=element.getText();
+	 Assert.assertEquals(expTitle,actualtilte);
+	 WebElement w3=driver.findElement(By.xpath("//a[@id='link3']"));
+	 a.moveToElement(w).click().build().perform();
+	 
 	
   }
  
 
   @BeforeTest
-  public void beforeTest() {
-	  System.setProperty("webdriver.chrome.driver", "D:\\Chrome91\\chromedriver_win32\\chromedriver.exe");
+  public void beforeTest() {	  System.setProperty("webdriver.chrome.driver", "D:\\Chrome91\\chromedriver_win32\\chromedriver.exe");
 		 driver=new ChromeDriver();
 		 driver.get("https://annauniv.edu/");
 		 driver.manage().window().maximize();
