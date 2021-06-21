@@ -46,13 +46,7 @@ public class Assignment3 {
 		driver.quit();
 	  
   }
-  @BeforeMethod
-  public void beforeMethod() {
-  }
-
-  @AfterMethod
-  public void afterMethod() {
-  }
+ 
 
   @BeforeTest
   public void beforeTest() {

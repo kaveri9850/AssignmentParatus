@@ -40,53 +40,28 @@ public class Assignment2 {
   public void f() {
 	  driver.findElement(By.xpath("//a[@id='plan-my-trip']")).click();
 	
-	 
-
-	// driver.findElement(By.cssSelector("div.form-control.search")).sendKeys("Hounston");
 	driver.findElement(By.xpath("//body[1]/main[1]/div[5]/div[1]/div[3]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")).sendKeys("Houston");
-	
-	
-	 
-	// List<WebElement> options=driver.findElements(By.cssSelector("div.city-listing.city-list li"));
-	
-	 List<WebElement> options=driver.findElements(By.xpath("li.city-list-i.js_suggestions.js_add_city"));
-	 
-		//WebDriverWait wait=new WebDriverWait(driver,20);
-		
-	 WebDriverWait wait=new WebDriverWait(driver,10);
-	 wait.until(ExpectedConditions.visibilityOfAllElements(options));
-		for(WebElement option:options)
-		{
-			if(option.getText().equalsIgnoreCase("Houston, Texas, United States"))
-					{
-				
-				option.click();
-				break;
-					}
-		}
+	WebDriverWait wait=new WebDriverWait(driver,10);
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-name='Houston, United States']"))).click();
 	
 	  driver.findElement(By.xpath("//span[@class='start-date-control']")).click();
 	  driver.findElement(By.linkText("23")).click();
 	  driver.findElement(By.xpath("//span[@class='end-date-control']")).click();
 	  driver.findElement(By.linkText("9")).click();
-	 // driver.findElement(By.cssSelector("span.button.p-color.full-width.start-planning")).click();
+	 
 	  driver.findElement(By.xpath("//body[1]/main[1]/div[5]/div[1]/div[3]/div[1]/section[1]/div[3]/div[1]/span[1]")).click();
 	
-	driver.findElement(By.xpath("//span[@id='js_city_step_next']")).click();
-	 
-	  driver.findElement(By.xpath("//span[contains(text(),'Things to do')]")).click();
-	  Set<String> s=driver.getWindowHandles();
-	  Iterator<String> it=s.iterator();
-	  String mainwin=it.next();
-	  String childwin=it.next();
-	  driver.switchTo().window(childwin);
-	//WebElement n= driver.findElement(By.xpath("//span[contains(text(),'Next')]"));
-	  WebDriverWait wait1=new WebDriverWait(driver,10);
+	
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.step-name.next-btn-dsk"))).click();
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/main[1]/div[5]/div[1]/div[3]/div[1]/section[1]/div[1]/div[3]/div[1]/div[2]"))).click();
+	
+	  WebDriverWait wait1=new WebDriverWait(driver,20);
+	  List<WebElement> list=driver.findElements(By.xpath("//span[contains(text(),'Next')]"));
 	  
-	wait1.until(ExpectedConditions.elementToBeClickable( driver.findElement(By.xpath("//span[contains(text(),'Next')]")))).click();
-	//wait1.until(ExpectedConditions.elementToBeClickable( driver.findElement(By.xpath("//span[contains(text(),'Next')]")))).click();
-	//wait1.until(ExpectedConditions.elementToBeClickable( driver.findElement(By.xpath("//span[contains(text(),'Next')]")))).click();
-	driver.switchTo().window(mainwin);
+	wait1.until(ExpectedConditions.elementToBeClickable(list.get(0) )).click();
+	wait1.until(ExpectedConditions.elementToBeClickable(list.get(0) )).click();
+	wait1.until(ExpectedConditions.elementToBeClickable(list.get(0) )).click();
+	
 	driver.findElement(By.cssSelector("div.entry-point.solo-ep")).click();
 	driver.findElement(By.xpath("//div[contains(text(),'Trip Overview')]")).click();
 	driver.findElement(By.cssSelector("li.view-tab.calendar")).click();
