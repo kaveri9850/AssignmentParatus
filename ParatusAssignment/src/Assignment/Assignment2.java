@@ -66,16 +66,16 @@ public class Assignment2 {
 	 driver.findElement(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked")).click();
 	
      wait1.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked")));
-     System.out.println( driver.findElement(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked")).getText());
+    
     
      
-    // wait1.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("//div[@class='custom-acc-form']")));
-    // driver.findElement(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked")).click();
+     wait1.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("//div[@class='custom-acc-form']")));
+     driver.findElement(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked")).click();
 	driver.findElement(By.cssSelector("div.entry-point.solo-ep")).click();
 	driver.findElement(By.xpath("//div[contains(text(),'Trip Overview')]")).click();
 	driver.findElement(By.cssSelector("li.view-tab.calendar")).click();
 	Actions a=new Actions(driver);
-	WebElement source=driver.findElement(By.xpath("//body[1]/main[1]/div[5]/div[1]/div[3]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/div[1]/div[3]/table[1]/tbody[1]/tr[1]/td[4]/div[1]/div[2]/a[4]"));
+	WebElement source=driver.findElement(By.cssSelector("[title='Childrens Museum Of Houston']"));
 	WebElement target=driver.findElement(By.xpath("//tbody/tr[10]/td[2]"));
 	a.dragAndDrop(source, target);
 	

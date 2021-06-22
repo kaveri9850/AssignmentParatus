@@ -40,8 +40,7 @@ public class Assignment1  {
 	 
 	 a.moveToElement(w).build().perform(); 
 	 
-	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'Institute\\u00a0for\\u00a0Ocean\\u00a0Managment')]"))).click();
-	
+	//not able to find out xpath for ocean management
 	 
 	
 	 WebElement w3=driver.findElement(By.xpath("//a[@id='link3']"));
