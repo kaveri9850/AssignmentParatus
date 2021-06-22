@@ -12,6 +12,11 @@ package Assignment;
 - Click on "Next" thrice
 - Click on "Wandering Solo"
 - Click on "Next Trip Overview"
+ Click on "Editable View"
+- Drag "Children's museum to day 3"
+- Click on Save plan -> Finish Planning
+
+
  */
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
@@ -39,8 +44,9 @@ public class Assignment2 {
   @Test
   public void f() {
 	  driver.findElement(By.xpath("//a[@id='plan-my-trip']")).click();
+	driver.findElement(By.cssSelector("input.input-control.js_city_search")).sendKeys("Houston");
 	
-	driver.findElement(By.xpath("//body[1]/main[1]/div[5]/div[1]/div[3]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")).sendKeys("Houston");
+
 	WebDriverWait wait=new WebDriverWait(driver,10);
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-name='Houston, United States']"))).click();
 	
@@ -49,19 +55,22 @@ public class Assignment2 {
 	  driver.findElement(By.xpath("//span[@class='end-date-control']")).click();
 	  driver.findElement(By.linkText("9")).click();
 	 
-	  driver.findElement(By.xpath("//body[1]/main[1]/div[5]/div[1]/div[3]/div[1]/section[1]/div[3]/div[1]/span[1]")).click();
 	
+	driver.findElement(By.cssSelector("[class='button p-color full-width start-planning']")).click();
 	
-	wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.step-name.next-btn-dsk"))).click();
-	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/main[1]/div[5]/div[1]/div[3]/div[1]/section[1]/div[1]/div[3]/div[1]/div[2]"))).click();
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.p-color.p-size.button.next-btn-dsk"))).click();
 	
-	  WebDriverWait wait1=new WebDriverWait(driver,20);
-	  List<WebElement> list=driver.findElements(By.xpath("//span[contains(text(),'Next')]"));
-	  
-	wait1.until(ExpectedConditions.elementToBeClickable(list.get(0) )).click();
-	wait1.until(ExpectedConditions.elementToBeClickable(list.get(0) )).click();
-	wait1.until(ExpectedConditions.elementToBeClickable(list.get(0) )).click();
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'itinerary')]/parent::div/div[2]/div[2]/child::span[contains(text(),'Things')]"))).click();
 	
+	 WebDriverWait wait1=new WebDriverWait(driver,20);
+	 driver.findElement(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked")).click();
+	
+     wait1.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked")));
+     System.out.println( driver.findElement(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked")).getText());
+    
+     
+    // wait1.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("//div[@class='custom-acc-form']")));
+    // driver.findElement(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked")).click();
 	driver.findElement(By.cssSelector("div.entry-point.solo-ep")).click();
 	driver.findElement(By.xpath("//div[contains(text(),'Trip Overview')]")).click();
 	driver.findElement(By.cssSelector("li.view-tab.calendar")).click();

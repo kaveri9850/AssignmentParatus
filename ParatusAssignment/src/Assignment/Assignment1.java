@@ -36,16 +36,14 @@ public class Assignment1  {
 	 
 		 WebElement w= driver.findElement(By.xpath("//strong[contains(text(),'Faculty of Civil Engineering')]"));
 	 
-	// wait.until(ExpectedConditions.elementToBeClickable(w));
+	
 	 
 	 a.moveToElement(w).build().perform(); 
 	 
 	 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'Institute\\u00a0for\\u00a0Ocean\\u00a0Managment')]"))).click();
 	
 	 
-	//String actualtilte=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'Institute\\u00a0for\\u00a0Ocean\\u00a0Managment')]")));
-		
- //Assert.assertEquals(expTitle,actualtilte);
+	
 	 WebElement w3=driver.findElement(By.xpath("//a[@id='link3']"));
 	 a.moveToElement(w).click().build().perform();
 	 
