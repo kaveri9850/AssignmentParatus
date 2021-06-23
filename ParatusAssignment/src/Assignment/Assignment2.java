@@ -51,9 +51,9 @@ public class Assignment2 {
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-name='Houston, United States']"))).click();
 	
 	  driver.findElement(By.xpath("//span[@class='start-date-control']")).click();
-	  driver.findElement(By.linkText("23")).click();
+	  driver.findElement(By.linkText("25")).click();
 	  driver.findElement(By.xpath("//span[@class='end-date-control']")).click();
-	  driver.findElement(By.linkText("9")).click();
+	  driver.findElement(By.linkText("15")).click();
 	 
 	
 	driver.findElement(By.cssSelector("[class='button p-color full-width start-planning']")).click();
@@ -63,19 +63,25 @@ public class Assignment2 {
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'itinerary')]/parent::div/div[2]/div[2]/child::span[contains(text(),'Things')]"))).click();
 	
 	 WebDriverWait wait1=new WebDriverWait(driver,20);
-	 driver.findElement(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked")).click();
+	 WebElement element=driver.findElement(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked"));
+	 JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].click()", element);
+	 
 	
-     wait1.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked")));
     
     
+		 WebElement element1=driver.findElement(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked"));
+		// JavascriptExecutor jse = (JavascriptExecutor)driver;
+			jse.executeScript("arguments[0].click()", element1);
      
-     wait1.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("//div[@class='custom-acc-form']")));
-     driver.findElement(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked")).click();
-	driver.findElement(By.cssSelector("div.entry-point.solo-ep")).click();
-	driver.findElement(By.xpath("//div[contains(text(),'Trip Overview')]")).click();
-	driver.findElement(By.cssSelector("li.view-tab.calendar")).click();
+    
+    // driver.findElement(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked")).click();
+			 wait1.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.entry-point.solo-ep"))).click();
+			 wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Trip Overview')]"))).click();
+	//driver.findElement(By.cssSelector("span.p-color.p-size.button.next-btn-dsk")).click();
+			 wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Editable')]"))).click();
 	Actions a=new Actions(driver);
-	WebElement source=driver.findElement(By.cssSelector("[title='Childrens Museum Of Houston']"));
+	WebElement source= wait1.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[title='Childrens Museum Of Houston']")));
 	WebElement target=driver.findElement(By.xpath("//tbody/tr[10]/td[2]"));
 	a.dragAndDrop(source, target);
 	
