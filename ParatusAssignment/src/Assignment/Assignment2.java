@@ -71,14 +71,16 @@ public class Assignment2 {
     
     
 		 WebElement element1=driver.findElement(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked"));
-		// JavascriptExecutor jse = (JavascriptExecutor)driver;
+		
 			jse.executeScript("arguments[0].click()", element1);
      
     
-    // driver.findElement(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked")).click();
+   WebElement element2= driver.findElement(By.cssSelector("span.button.s-size.p-color.as-next.js-next-alreadybooked"));
+    jse.executeScript("arguments[0].click()", element2);
+    
 			 wait1.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.entry-point.solo-ep"))).click();
 			 wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Trip Overview')]"))).click();
-	//driver.findElement(By.cssSelector("span.p-color.p-size.button.next-btn-dsk")).click();
+	
 			 wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Editable')]"))).click();
 	Actions a=new Actions(driver);
 	WebElement source= wait1.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[title='Childrens Museum Of Houston']")));
