@@ -44,7 +44,7 @@ public class Assignment1  {
 	 
 	 a.moveToElement(w).build().perform(); 
 	
-driver.findElement(By.xpath("//div[@id='menuItem33']")).click();;
+driver.findElement(By.xpath("//div[@id='menuItem33']")).click();// finding xpath through dubbgging mode 
 	String actualtitle=driver.getTitle();
 	
 	System.out.println(driver.getTitle());
