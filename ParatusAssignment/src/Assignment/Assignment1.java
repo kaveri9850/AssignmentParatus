@@ -10,6 +10,10 @@ package Assignment;
 6. Verify the page title. */
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
+
+import java.util.Iterator;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -25,7 +29,7 @@ import org.testng.annotations.AfterTest;
 
 public class Assignment1  {
 	WebDriver driver;
-	String expTitle="Institute For Ocean Management";
+	String expTitle="Institute For Ocean Management - Anna University offers M.Tech in Coastal Management. ENVIS Center for Coastal Zone Management and Coastal Shelterbelts";
 	
   @Test
   public void f()throws InterruptedException {
@@ -39,14 +43,19 @@ public class Assignment1  {
 	
 	 
 	 a.moveToElement(w).build().perform(); 
-	 
-	//not able to find out xpath for ocean management
-	 
 	
-	 WebElement w3=driver.findElement(By.xpath("//a[@id='link3']"));
-	 a.moveToElement(w).click().build().perform();
-	 
+driver.findElement(By.xpath("//div[@id='menuItem33']")).click();;
+	String actualtitle=driver.getTitle();
 	
+	System.out.println(driver.getTitle());
+	Assert.assertEquals(expTitle, actualtitle);
+	WebElement w2=driver.findElement(By.cssSelector("a#link3.toplink"));
+	a.moveToElement(w2).build().perform();
+	driver.findElement(By.cssSelector("div#menuItem13")).click();
+	System.out.println(driver.getTitle());
+	String exp=":: IOM - Institute For Ocean Management - Anna University ::";
+	String actual =driver.getTitle();
+	Assert.assertEquals(exp, actual);
   }
  
 
@@ -59,6 +68,7 @@ public class Assignment1  {
 
   @AfterTest
   public void afterTest() {
+	  driver.close();
   }
 
 }
